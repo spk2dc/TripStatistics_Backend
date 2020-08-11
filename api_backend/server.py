@@ -8,8 +8,8 @@ PORT = 8000
 import models
 
 #importing resource
-from resources.dogs import dog
-from resources.user import user 
+from resources.maps import map
+from resources.users import user 
 
 login_manager = LoginManager() # sets up the ability to set up the session
 
@@ -41,8 +41,8 @@ def after_request(response):
     return response
 
 
-CORS(dog, origins=['http://localhost:3000'], supports_credentials=True)
-app.register_blueprint(dog, url_prefix='/api/v1/dogs')
+CORS(map, origins=['http://localhost:3000'], supports_credentials=True)
+app.register_blueprint(map, url_prefix='/api/v1/maps')
 
 CORS(user, origins=['http://localhost:3000'], supports_credentials=True)
 app.register_blueprint(user, url_prefix='/user')
