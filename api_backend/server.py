@@ -8,7 +8,7 @@ PORT = 8000
 import models
 
 #importing resource
-from resources.maps import map
+from resources.all_maps import all_map
 from resources.users import user 
 
 login_manager = LoginManager() # sets up the ability to set up the session
@@ -41,8 +41,8 @@ def after_request(response):
     return response
 
 
-CORS(map, origins=['http://localhost:3000'], supports_credentials=True)
-app.register_blueprint(map, url_prefix='/api/v1/maps')
+CORS(all_map, origins=['http://localhost:3000'], supports_credentials=True)
+app.register_blueprint(all_map, url_prefix='/api/v1/all_maps')
 
 CORS(user, origins=['http://localhost:3000'], supports_credentials=True)
 app.register_blueprint(user, url_prefix='/user')

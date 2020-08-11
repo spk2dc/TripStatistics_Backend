@@ -12,7 +12,7 @@ class User(UserMixin, Model):
     class Meta:
         database = DATABASE
 
-class Map(Model):
+class All_Map(Model):
     name = CharField()
     user = CharField()
     data = CharField()
@@ -24,6 +24,6 @@ class Map(Model):
 
 def initialize():
     DATABASE.connect()
-    DATABASE.create_tables([User, Map], safe=True)
+    DATABASE.create_tables([User, All_Map], safe=True)
     print("TABLES Created")
     DATABASE.close()
