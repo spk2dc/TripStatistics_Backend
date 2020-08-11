@@ -1,0 +1,20 @@
+CREATE (POST)
+
+curl -X POST localhost:8000/api/v1/maps/ -H 'Content-Type: application/json' --data '{"name": "map1", "user": "user1", "data": "test data"}'
+
+curl -X POST localhost:8000/user/register -H 'Content-Type: application/json' --data '{"email": "email@email.com", "username": "user1", "password": "pass"}'
+
+
+SHOW (GET)
+
+curl -X GET localhost:8000/api/v1/maps/2
+
+
+UPDATE (PUT)
+
+curl -X PUT localhost:8000/api/v1/maps/2 -H 'Content-Type: application/json' --data '{"name": "updatedMap1"}'
+
+
+DELETE
+
+curl -X DELETE localhost:8000/api/v1/maps/2
