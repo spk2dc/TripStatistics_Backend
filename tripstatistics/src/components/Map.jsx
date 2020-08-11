@@ -31,3 +31,12 @@ export default function Map() {
     </div>
   );
 }
+
+/* 
+Sources: 
+
+https://engineering.universe.com/building-a-google-map-in-react-b103b4ee97f1
+
+https://developers.google.com/maps/documentation/javascript/overview#all
+
+*/
