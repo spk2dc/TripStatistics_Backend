@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function Map() {
   let map;
@@ -8,8 +8,6 @@ export default function Map() {
     var script = document.createElement("script");
     script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_API_KEY_1}&callback=initMap`;
     script.defer = true;
-
-    console.log(`window.initMap -> map`, map);
 
     // Attach your callback function to the `window` object
     window.initMap = function () {
