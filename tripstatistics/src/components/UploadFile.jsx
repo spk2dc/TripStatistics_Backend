@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 export default function UploadFile() {
   // State Hook
@@ -14,18 +15,19 @@ export default function UploadFile() {
   const onFileUpload = (event) => {
     event.preventDefault();
 
-    // Details of the uploaded file
-    console.log(selectedFile);
-
     // Create an object of formData
     const formData = new FormData();
 
     // Update the formData object
     formData.append("myFile", selectedFile, selectedFile.name);
 
+    // Details of the uploaded file
+    console.log(formData);
+
     // Request made to the backend api
     // Send formData object
-    // axios.post("api/uploadfile", formData);
+    // axios.post("api/v1/all_maps/", formData);
+    axios.post("http://localhost:8000/api/v1/all_maps/", formData);
   };
 
   // File content to be displayed after
