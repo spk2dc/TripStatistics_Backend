@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
 export default function Map() {
+  let map;
+  const google = window.google;
+
   const createMap = () => {
     // Create the script tag, set the appropriate attributes
     var script = document.createElement("script");
@@ -9,7 +12,10 @@ export default function Map() {
 
     // Attach your callback function to the `window` object
     window.initMap = function () {
-      // JS API is loaded and available
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: -34.397, lng: 150.644 },
+        zoom: 8,
+      });
     };
 
     // Append the 'script' element to 'head'
