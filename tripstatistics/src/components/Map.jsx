@@ -13,9 +13,16 @@ export default function Map() {
 
     // Attach your callback function to the `window` object
     window.initMap = function () {
+      var latLng = new window.google.maps.LatLng(-34.397, 150.644);
+
       map = new window.google.maps.Map(document.getElementById("map"), {
-        center: { lat: -34.397, lng: 150.644 },
+        center: latLng,
         zoom: 8,
+      });
+
+      var marker = new window.google.maps.Marker({
+        position: latLng,
+        map: map,
       });
     };
 
@@ -38,5 +45,7 @@ Sources:
 https://engineering.universe.com/building-a-google-map-in-react-b103b4ee97f1
 
 https://developers.google.com/maps/documentation/javascript/overview#all
+
+https://developers.google.com/maps/documentation/javascript/earthquakes
 
 */
