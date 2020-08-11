@@ -7,19 +7,21 @@ export default function UploadFile() {
   // On file select (from the pop up)
   const onFileChange = (event) => {
     // Update the state
-    setSelectedFile({ selectedFile: event.target.files[0] });
+    setSelectedFile(event.target.files[0]);
   };
 
   // On file upload (click the upload button)
-  const onFileUpload = () => {
+  const onFileUpload = (event) => {
+    event.preventDefault();
+
+    // Details of the uploaded file
+    console.log(selectedFile);
+
     // Create an object of formData
     const formData = new FormData();
 
     // Update the formData object
     formData.append("myFile", selectedFile, selectedFile.name);
-
-    // Details of the uploaded file
-    console.log(selectedFile);
 
     // Request made to the backend api
     // Send formData object
@@ -30,12 +32,14 @@ export default function UploadFile() {
   // file upload is complete
   const fileData = () => {
     if (selectedFile) {
+      console.log(`fileData -> selectedFile`, selectedFile);
+
       return (
         <div>
           <h2>File Details:</h2>
           <p>File Name: {selectedFile.name}</p>
           <p>File Type: {selectedFile.type}</p>
-          {/* <p>Last Modified: {selectedFile.lastModifiedDate.toDateString()}</p> */}
+          <p>Last Modified: {selectedFile.lastModifiedDate.toDateString()}</p>
         </div>
       );
     } else {
@@ -52,8 +56,18 @@ export default function UploadFile() {
     <div>
       <h1>Upload File</h1>
       <form action=''>
-        <input type='file' onChange={onFileChange} />
-        <button type='submit' onClick={onFileUpload}>
+        <input
+          type='file'
+          onChange={(e) => {
+            onFileChange(e);
+          }}
+        />
+        <button
+          type='submit'
+          onClick={(e) => {
+            onFileUpload(e);
+          }}
+        >
           Upload
         </button>
       </form>
