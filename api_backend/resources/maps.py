@@ -10,7 +10,7 @@ from flask_login import login_required
 # second argument is it's import_name
 # The third argument is the url_prefix so we don't have
 # to prefix all our apis with /api/v1
-map = Blueprint('maps', 'map')
+map = Blueprint('maps', 'map', url_prefix='/api/v1/maps')
 
 @map.route('/', methods=["GET"])
 # @login_required
