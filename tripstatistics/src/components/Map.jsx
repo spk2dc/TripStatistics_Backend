@@ -13,7 +13,7 @@ export default function Map() {
 
     // Attach your callback function to the `window` object
     window.initMap = function () {
-      var latLng = new window.google.maps.LatLng(-34.397, 150.644);
+      var latLng = new window.google.maps.LatLng(43.642567, -79.387054);
 
       map = new window.google.maps.Map(document.getElementById("map"), {
         center: latLng,
