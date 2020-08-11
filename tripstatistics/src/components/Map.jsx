@@ -26,7 +26,7 @@ export default function Map() {
   return (
     <div>
       <h1>Map</h1>
-      <div id='map' style={{ width: "400px", height: "400px" }}></div>
+      <div id='map'></div>
       {createMap()}
     </div>
   );
