@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 export default function Map() {
   let map;
-  const google = window.google;
 
   const createMap = () => {
     // Create the script tag, set the appropriate attributes
@@ -10,9 +9,11 @@ export default function Map() {
     script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_API_KEY_1}&callback=initMap`;
     script.defer = true;
 
+    console.log(`window.initMap -> map`, map);
+
     // Attach your callback function to the `window` object
     window.initMap = function () {
-      map = new google.maps.Map(document.getElementById("map"), {
+      map = new window.google.maps.Map(document.getElementById("map"), {
         center: { lat: -34.397, lng: 150.644 },
         zoom: 8,
       });
@@ -25,7 +26,7 @@ export default function Map() {
   return (
     <div>
       <h1>Map</h1>
-      <div id='map'></div>
+      <div id='map' style={{ width: "400px", height: "400px" }}></div>
       {createMap()}
     </div>
   );
