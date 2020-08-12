@@ -56,10 +56,12 @@ def after_request(response):
     return response
 
 
-CORS(all_map, origins=['http://localhost:3000'], supports_credentials=True)
+CORS(all_map, origins=['http://localhost:3000',
+                       'https://tripstatistics.herokuapp.com'], supports_credentials=True)
 app.register_blueprint(all_map, url_prefix='/api/v1/all_maps')
 
-CORS(user, origins=['http://localhost:3000'], supports_credentials=True)
+CORS(user, origins=['http://localhost:3000',
+                    'https://tripstatistics.herokuapp.com'], supports_credentials=True)
 app.register_blueprint(user, url_prefix='/user')
 
 # determine database to use depending on if environment is local or heroku
