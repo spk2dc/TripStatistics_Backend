@@ -1,8 +1,15 @@
 import models
-from flask import Blueprint, jsonify, request
+import os
+from flask import Flask, Blueprint, jsonify, request
 from playhouse.shortcuts import model_to_dict
 # from flask_login import login_required
 from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = './file_uploads'
+ALLOWED_EXTENSIONS = {'json'}
+
+app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # first argument is blueprints name
 # second argument is it's import_name
@@ -23,12 +30,22 @@ def get_all_maps():
         return jsonify(data={}, status={"code": 401, "message": "Error getting the resources"})
 
 
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
 @all_map.route('/', methods=["POST"])
 # @login_required
 def create_maps():
     # retrieve file and save name securely
     fileInp = request.files['data']
-    fileInp.save(secure_filename(fileInp.filename))
+    if allowed_file(fileInp.filename):
+        filename = secure_filename(fileInp.filename)
+        fileInp.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    else:
+        return jsonify(data={}, status={"code": 401, "message": "Error saving file"})
+
     # store in payload to create entry in database
     payload = {
         "name": request.form['name'],
