@@ -27,8 +27,12 @@ def get_all_maps():
 # @login_required
 def create_maps():
     ## see request payload anagolous to req.body in express
-    payload = request.form
-    print(payload, 'payload')
+    payload = {
+        "name": request.form['name'],
+        "user": request.form['user'],
+        "data": request.files['data']
+    }
+    print('\npayload: \n', payload)
     all_map = models.All_Map.create(**payload)
     ## see the object
     print(all_map.__dict__)

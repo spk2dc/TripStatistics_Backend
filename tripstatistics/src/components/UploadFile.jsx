@@ -69,7 +69,7 @@ export default function UploadFile() {
   return (
     <div>
       <h1>Upload File</h1>
-      <form action=''>
+      <form encType='multipart/form-data'>
         <input
           type='file'
           onChange={(e) => {
