@@ -1,5 +1,6 @@
 import models
 import os
+import json
 from flask import Flask, Blueprint, jsonify, request
 from playhouse.shortcuts import model_to_dict
 # from flask_login import login_required
@@ -47,19 +48,20 @@ def create_maps():
         return jsonify(data={}, status={"code": 401, "message": "Error saving file"})
 
     # store in payload to create entry in database
+    fileString = fileInp.read().decode('utf8')
     payload = {
         "name": request.form['name'],
         "user": request.form['user'],
-        "data": fileInp
+        "data": fileString
     }
     print('\npayload: \n', payload)
     all_map = models.All_Map.create(**payload)
     # see the object
-    print(all_map.__dict__)
+    print('\npayload.__dict__: \n', all_map.__dict__)
     # Look at all the methods
-    print(dir(all_map))
+    print('\npayload methods: \n', dir(all_map))
     # Change the model to a dict
-    print(model_to_dict(all_map), 'model to dict')
+    print('\nmodel to dict\n', model_to_dict(all_map))
     map_dict = model_to_dict(all_map)
     return jsonify(data=map_dict, status={"code": 201, "message": "Success"})
 
