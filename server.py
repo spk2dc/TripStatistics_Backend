@@ -5,6 +5,7 @@ import models
 from flask import Flask, g
 from flask_cors import CORS
 from flask_login import LoginManager
+from playhouse.db_url import connect
 
 DEBUG = True
 PORT = 8000
@@ -68,7 +69,8 @@ app.register_blueprint(user, url_prefix='/user')
 # determine database to use depending on if environment is local or heroku
 if 'ON_HEROKU' in os.environ:
     print('\nheroku tables initialized')
-    DATABASE = connect(os.environ.get('DATABASE_URL'))
+    models.initialize()
+    app.run(debug=DEBUG, port=PORT)
 
 if __name__ == '__main__':
     print('\nlocal tables initialized')
