@@ -94,3 +94,6 @@ def delete_map(id):
 # Sources:
 # https://pythonbasics.org/flask-upload-file/
 # https://flask.palletsprojects.com/en/1.1.x/patterns/fileuploads/
+# https://www.twilio.com/blog/working-with-json-in-python
+# https://stackoverflow.com/questions/16603621/how-to-store-json-object-in-sqlite-database
+# https://www.sqlite.org/json1.html

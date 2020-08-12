@@ -1,0 +1,504 @@
+{
+  "timelineObjects": [
+    {
+      "activitySegment": {
+        "startLocation": {
+          "latitudeE7": 417603200,
+          "longitudeE7": -727443182,
+          "sourceInfo": {
+            "deviceTag": 602769403
+          }
+        },
+        "endLocation": {
+          "latitudeE7": 417680970,
+          "longitudeE7": -726753080,
+          "sourceInfo": {
+            "deviceTag": 602769403
+          }
+        },
+        "duration": {
+          "startTimestampMs": "1564624766123",
+          "endTimestampMs": "1564625743912"
+        },
+        "distance": 9388,
+        "activityType": "IN_PASSENGER_VEHICLE",
+        "confidence": "LOW",
+        "activities": [
+          {
+            "activityType": "IN_PASSENGER_VEHICLE",
+            "probability": 52.44798537773194
+          },
+          {
+            "activityType": "WALKING",
+            "probability": 47.20667610822583
+          },
+          {
+            "activityType": "IN_BUS",
+            "probability": 0.2306160170458059
+          }
+        ],
+        "waypointPath": {
+          "waypoints": [
+            {
+              "latE7": 417602882,
+              "lngE7": -727444839
+            },
+            {
+              "latE7": 417510795,
+              "lngE7": -727030410
+            },
+            {
+              "latE7": 417710151,
+              "lngE7": -726799087
+            },
+            {
+              "latE7": 417694358,
+              "lngE7": -726746826
+            },
+            {
+              "latE7": 417681083,
+              "lngE7": -726754608
+            }
+          ]
+        },
+        "simplifiedRawPath": {
+          "points": [
+            {
+              "latE7": 417682811,
+              "lngE7": -726754193,
+              "timestampMs": "1564625679000",
+              "accuracyMeters": 4
+            },
+            {
+              "latE7": 417682714,
+              "lngE7": -726754086,
+              "timestampMs": "1564625711000",
+              "accuracyMeters": 4
+            }
+          ]
+        },
+        "parkingEvent": {
+          "timestampMs": "1564625743912",
+          "location": {
+            "latitudeE7": 417680970,
+            "longitudeE7": -726753080,
+            "accuracyMetres": 35
+          }
+        }
+      }
+    },
+    {
+      "activitySegment": {
+        "startLocation": {
+          "latitudeE7": 417680970,
+          "longitudeE7": -726753080,
+          "sourceInfo": {
+            "deviceTag": 602769403
+          }
+        },
+        "endLocation": {
+          "latitudeE7": 417662190,
+          "longitudeE7": -726738298,
+          "sourceInfo": {
+            "deviceTag": 602769403
+          }
+        },
+        "duration": {
+          "startTimestampMs": "1564625743912",
+          "endTimestampMs": "1564625943000"
+        },
+        "distance": 242,
+        "activityType": "WALKING",
+        "confidence": "LOW",
+        "activities": [
+          {
+            "activityType": "WALKING",
+            "probability": 52.44798537773194
+          },
+          {
+            "activityType": "IN_PASSENGER_VEHICLE",
+            "probability": 47.20667610822583
+          },
+          {
+            "activityType": "IN_BUS",
+            "probability": 0.2306160170458059
+          }
+        ],
+        "waypointPath": {
+          "waypoints": [
+            {
+              "latE7": 417681083,
+              "lngE7": -726754608
+            },
+            {
+              "latE7": 417673377,
+              "lngE7": -726756820
+            },
+            {
+              "latE7": 417675209,
+              "lngE7": -726756591
+            }
+          ]
+        },
+        "simplifiedRawPath": {
+          "points": [
+            {
+              "latE7": 417677172,
+              "lngE7": -726745068,
+              "timestampMs": "1564625797000",
+              "accuracyMeters": 15
+            }
+          ]
+        }
+      }
+    },
+    {
+      "placeVisit": {
+        "location": {
+          "latitudeE7": 417662190,
+          "longitudeE7": -726738298,
+          "placeId": "ChIJI-0sSHtT5okRk_OSi9ZmWd4",
+          "address": "777 Main Street\n777 Main St\nHartford, CT 06103\nUSA",
+          "name": "777 Main Street",
+          "locationConfidence": 100.0
+        },
+        "duration": {
+          "startTimestampMs": "1564625943000",
+          "endTimestampMs": "1564630525000"
+        },
+        "placeConfidence": "USER_CONFIRMED",
+        "visitConfidence": 100,
+        "otherCandidateLocations": [
+          {
+            "latitudeE7": 417675524,
+            "longitudeE7": -726760980,
+            "placeId": "ChIJYSQOnmRT5okRIrPjJ4zQ1Vc",
+            "semanticType": "TYPE_SEARCHED_ADDRESS",
+            "locationConfidence": 13.162971
+          },
+          {
+            "latitudeE7": 417658390,
+            "longitudeE7": -726727920,
+            "placeId": "ChIJgfyDPXtT5okRH0jmYU8pvqE",
+            "locationConfidence": 1.5933003
+          },
+          {
+            "latitudeE7": 417660606,
+            "longitudeE7": -726735361,
+            "placeId": "ChIJwdfTNXtT5okR_9toAiCJPQs",
+            "locationConfidence": 1.2859641
+          },
+          {
+            "latitudeE7": 417656600,
+            "longitudeE7": -726726350,
+            "placeId": "ChIJGWpFFntT5okR6gHeYcis8pk",
+            "locationConfidence": 0.997894
+          },
+          {
+            "latitudeE7": 417660964,
+            "longitudeE7": -726726803,
+            "placeId": "ChIJ5Q3aO3tT5okRQSlFvvvBJBI",
+            "locationConfidence": 0.81802446
+          },
+          {
+            "latitudeE7": 417664633,
+            "longitudeE7": -726736552,
+            "placeId": "ChIJB_i2CjDO54kRz-mBFkRb128",
+            "locationConfidence": 0.51258963
+          }
+        ],
+        "editConfirmationStatus": "CONFIRMED"
+      }
+    },
+    {
+      "placeVisit": {
+        "location": {
+          "latitudeE7": 329177291,
+          "longitudeE7": -1172546215,
+          "placeId": "ChIJa5RVrGcG3IARsS8AQCWntoc",
+          "address": "12600 N Torrey Pines Rd\nLa Jolla, CA 92037\nUSA",
+          "name": "Torrey Pines State Reserve",
+          "sourceInfo": {
+            "deviceTag": 602769403
+          },
+          "locationConfidence": 99.81993
+        },
+        "duration": {
+          "startTimestampMs": "1567271173000",
+          "endTimestampMs": "1567275561237"
+        },
+        "placeConfidence": "HIGH_CONFIDENCE",
+        "childVisits": [
+          {
+            "location": {
+              "latitudeE7": 329239217,
+              "longitudeE7": -1172569793,
+              "placeId": "ChIJB4XhH78H3IARmRYGUGwdBNc",
+              "address": "Guy Fleming Trail\nLa Jolla, CA 92037\nUSA",
+              "name": "Guy Fleming Trail Trailhead",
+              "sourceInfo": {
+                "deviceTag": 602769403
+              },
+              "locationConfidence": 60.75264
+            },
+            "duration": {
+              "startTimestampMs": "1567271173000",
+              "endTimestampMs": "1567271701538"
+            },
+            "placeConfidence": "MEDIUM_CONFIDENCE",
+            "centerLatE7": 329254300,
+            "centerLngE7": -1172565600,
+            "visitConfidence": 89,
+            "otherCandidateLocations": [
+              {
+                "latitudeE7": 329336768,
+                "longitudeE7": -1172606779,
+                "placeId": "ChIJP2h3vgrRwoARcvUCuHmgf-I",
+                "locationConfidence": 25.24957
+              },
+              {
+                "latitudeE7": 329270040,
+                "longitudeE7": -1172592969,
+                "placeId": "ChIJve9ChA4G3IAREiFgPUGriI4",
+                "locationConfidence": 1.3314635
+              },
+              {
+                "latitudeE7": 329336768,
+                "longitudeE7": -1172606779,
+                "placeId": "ChIJgfzHzgUG3IARA5a_2NZf5KM",
+                "locationConfidence": 0.48778397
+              },
+              {
+                "latitudeE7": 329040277,
+                "longitudeE7": -1172545799,
+                "placeId": "ChIJ4zZ5MYcH3IARL4uwIlwdBUc",
+                "locationConfidence": 0.35962108
+              }
+            ],
+            "editConfirmationStatus": "NOT_CONFIRMED"
+          },
+          {
+            "location": {
+              "latitudeE7": 329209671,
+              "longitudeE7": -1172531426,
+              "placeId": "ChIJ2yXmHG0G3IARYNCbk0BFF_g",
+              "address": "12600 N Torrey Pines Rd\nLa Jolla, CA 92037\nUSA",
+              "name": "Torrey Pines Reserve Lodge and Visitor Center",
+              "sourceInfo": {
+                "deviceTag": 602769403
+              },
+              "locationConfidence": 56.14916
+            },
+            "duration": {
+              "startTimestampMs": "1567271727344",
+              "endTimestampMs": "1567273931986"
+            },
+            "placeConfidence": "MEDIUM_CONFIDENCE",
+            "centerLatE7": 329204120,
+            "centerLngE7": -1172530845,
+            "visitConfidence": 89,
+            "otherCandidateLocations": [
+              {
+                "latitudeE7": 329193966,
+                "longitudeE7": -1172526326,
+                "placeId": "ChIJE4l2UmwG3IARD3juIphOwKI",
+                "locationConfidence": 18.744265
+              },
+              {
+                "latitudeE7": 329200538,
+                "longitudeE7": -1172527973,
+                "placeId": "ChIJZaC3yhgH3IARTif0D0IMGYw",
+                "locationConfidence": 18.741657
+              },
+              {
+                "latitudeE7": 329197262,
+                "longitudeE7": -1172530457,
+                "placeId": "ChIJ3bQyzZwH3IARUYkSNlHMskI",
+                "locationConfidence": 5.91476
+              },
+              {
+                "latitudeE7": 262491384,
+                "longitudeE7": -1600047215,
+                "placeId": "ChIJ0ZQzqkVA1DIRIEEusKYv_eg",
+                "locationConfidence": 0.14458215
+              }
+            ],
+            "editConfirmationStatus": "NOT_CONFIRMED"
+          },
+          {
+            "location": {
+              "latitudeE7": 329239217,
+              "longitudeE7": -1172569793,
+              "placeId": "ChIJB4XhH78H3IARmRYGUGwdBNc",
+              "address": "Guy Fleming Trail\nLa Jolla, CA 92037\nUSA",
+              "name": "Guy Fleming Trail Trailhead",
+              "sourceInfo": {
+                "deviceTag": 602769403
+              },
+              "locationConfidence": 52.26595
+            },
+            "duration": {
+              "startTimestampMs": "1567275080000",
+              "endTimestampMs": "1567275561237"
+            },
+            "placeConfidence": "MEDIUM_CONFIDENCE",
+            "centerLatE7": 329233200,
+            "centerLngE7": -1172562300,
+            "visitConfidence": 89,
+            "otherCandidateLocations": [
+              {
+                "latitudeE7": 329336768,
+                "longitudeE7": -1172606779,
+                "placeId": "ChIJP2h3vgrRwoARcvUCuHmgf-I",
+                "locationConfidence": 31.472067
+              },
+              {
+                "latitudeE7": 329336768,
+                "longitudeE7": -1172606779,
+                "placeId": "ChIJgfzHzgUG3IARA5a_2NZf5KM",
+                "locationConfidence": 0.35686827
+              },
+              {
+                "latitudeE7": 329040277,
+                "longitudeE7": -1172545799,
+                "placeId": "ChIJ4zZ5MYcH3IARL4uwIlwdBUc",
+                "locationConfidence": 0.28924337
+              },
+              {
+                "latitudeE7": 262491384,
+                "longitudeE7": -1600047215,
+                "placeId": "ChIJ0ZQzqkVA1DIRIEEusKYv_eg",
+                "locationConfidence": 0.22896433
+              }
+            ],
+            "editConfirmationStatus": "NOT_CONFIRMED"
+          }
+        ],
+        "centerLatE7": 329222272,
+        "centerLngE7": -1172538948,
+        "visitConfidence": 89,
+        "otherCandidateLocations": [
+          {
+            "latitudeE7": 262491384,
+            "longitudeE7": -1600047215,
+            "placeId": "ChIJ0ZQzqkVA1DIRIEEusKYv_eg",
+            "locationConfidence": 0.096390255
+          },
+          {
+            "latitudeE7": -99045310,
+            "longitudeE7": -1472785104,
+            "placeId": "ChIJ6xjzMCwE7XYRvGyHcKAU_44",
+            "locationConfidence": 0.08367705
+          }
+        ],
+        "editConfirmationStatus": "NOT_CONFIRMED",
+        "simplifiedRawPath": {
+          "points": [
+            {
+              "latE7": 329254399,
+              "lngE7": -1172565661,
+              "timestampMs": "1567271173000",
+              "accuracyMeters": 12
+            },
+            {
+              "latE7": 329254399,
+              "lngE7": -1172565661,
+              "timestampMs": "1567271195078",
+              "accuracyMeters": 47
+            },
+            {
+              "latE7": 329204499,
+              "lngE7": -1172529805,
+              "timestampMs": "1567271727344",
+              "accuracyMeters": 110
+            },
+            {
+              "latE7": 329204499,
+              "lngE7": -1172529805,
+              "timestampMs": "1567271850189",
+              "accuracyMeters": 47
+            },
+            {
+              "latE7": 329204499,
+              "lngE7": -1172529805,
+              "timestampMs": "1567271886102",
+              "accuracyMeters": 56
+            },
+            {
+              "latE7": 329204499,
+              "lngE7": -1172529805,
+              "timestampMs": "1567272033415",
+              "accuracyMeters": 39
+            },
+            {
+              "latE7": 329204499,
+              "lngE7": -1172529805,
+              "timestampMs": "1567272077954",
+              "accuracyMeters": 29
+            },
+            {
+              "latE7": 329197654,
+              "lngE7": -1172531591,
+              "timestampMs": "1567272248000",
+              "accuracyMeters": 3
+            },
+            {
+              "latE7": 329204499,
+              "lngE7": -1172529805,
+              "timestampMs": "1567272566165",
+              "accuracyMeters": 52
+            },
+            {
+              "latE7": 329191805,
+              "lngE7": -1172546411,
+              "timestampMs": "1567272990456",
+              "accuracyMeters": 43
+            },
+            {
+              "latE7": 329204499,
+              "lngE7": -1172529805,
+              "timestampMs": "1567273480479",
+              "accuracyMeters": 77
+            },
+            {
+              "latE7": 329204499,
+              "lngE7": -1172529805,
+              "timestampMs": "1567273602396",
+              "accuracyMeters": 17
+            },
+            {
+              "latE7": 329204499,
+              "lngE7": -1172529805,
+              "timestampMs": "1567273650602",
+              "accuracyMeters": 26
+            },
+            {
+              "latE7": 329321108,
+              "lngE7": -1172495228,
+              "timestampMs": "1567274055085",
+              "accuracyMeters": 92
+            },
+            {
+              "latE7": 329251103,
+              "lngE7": -1172580899,
+              "timestampMs": "1567274789000",
+              "accuracyMeters": 6
+            },
+            {
+              "latE7": 329251103,
+              "lngE7": -1172580899,
+              "timestampMs": "1567274809351",
+              "accuracyMeters": 38
+            },
+            {
+              "latE7": 329233260,
+              "lngE7": -1172562379,
+              "timestampMs": "1567275160177",
+              "accuracyMeters": 132
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
