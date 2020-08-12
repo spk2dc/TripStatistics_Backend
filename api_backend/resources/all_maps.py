@@ -47,8 +47,11 @@ def create_maps():
     else:
         return jsonify(data={}, status={"code": 401, "message": "Error saving file"})
 
-    # store in payload to create entry in database
+    # move pointer to beginning of file after it was saved
+    fileInp.stream.seek(0)
+    # read from file and store as string
     fileString = fileInp.read().decode('utf8')
+    # store in payload to create entry in database
     payload = {
         "name": request.form['name'],
         "user": request.form['user'],
@@ -97,3 +100,4 @@ def delete_map(id):
 # https://www.twilio.com/blog/working-with-json-in-python
 # https://stackoverflow.com/questions/16603621/how-to-store-json-object-in-sqlite-database
 # https://www.sqlite.org/json1.html
+# https://stackoverflow.com/questions/28438141/python-flask-upload-file-but-do-not-save-and-use
