@@ -1,8 +1,16 @@
+import os
 import datetime
 from peewee import *
 from flask_login import UserMixin
+from playhouse.db_url import connect
 
-DATABASE = SqliteDatabase('TripStatistics.sqlite')
+# determine database to use depending on if environment is local or heroku
+if 'ON_HEROKU' in os.environ:
+    print('\nheroku environment database')
+    DATABASE = connect(os.environ.get('DATABASE_URL'))
+else:
+    print('\nlocal environment database')
+    DATABASE = SqliteDatabase('TripStatistics.sqlite')
 
 
 class User(UserMixin, Model):

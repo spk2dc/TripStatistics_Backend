@@ -62,7 +62,12 @@ app.register_blueprint(all_map, url_prefix='/api/v1/all_maps')
 CORS(user, origins=['http://localhost:3000'], supports_credentials=True)
 app.register_blueprint(user, url_prefix='/user')
 
+# determine database to use depending on if environment is local or heroku
+if 'ON_HEROKU' in os.environ:
+    print('\nheroku tables initialized')
+    DATABASE = connect(os.environ.get('DATABASE_URL'))
+
 if __name__ == '__main__':
-    print('tables connected')
+    print('\nlocal tables initialized')
     models.initialize()
     app.run(debug=DEBUG, port=PORT)
