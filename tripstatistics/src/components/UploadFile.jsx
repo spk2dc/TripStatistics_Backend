@@ -19,7 +19,9 @@ export default function UploadFile() {
     const formData = new FormData();
 
     // Update the formData object
-    formData.append("myFile", selectedFile, selectedFile.name);
+    formData.append("data", selectedFile);
+    formData.append("name", selectedFile.name);
+    formData.append("user", "user5");
 
     let post_data = {
       name: selectedFile.name,
@@ -28,12 +30,12 @@ export default function UploadFile() {
     };
 
     // Details of the uploaded file
-    console.log(`onFileUpload -> post_data`, post_data);
+    console.log(`onFileUpload -> formData`, formData);
 
     // Request made to the backend api
     // Send formData object
     // axios.post("api/v1/all_maps/", formData);
-    axios.post("http://localhost:8000/api/v1/all_maps/", post_data);
+    axios.post("http://localhost:8000/api/v1/all_maps/", formData);
   };
 
   // File content to be displayed after
