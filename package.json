@@ -10,14 +10,13 @@
     "dotenv": "^8.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
-    "python": "3.6.9"
+    "react-scripts": "3.4.1"
   },
   "scripts": {
     "build": "cd tripstatistics && yarn build",
     "install-client": "cd tripstatistics && yarn install",
     "heroku-postbuild": "yarn install-client && yarn build",
-    "start": "node dist/server.js",
+    "start": "cd ../api_backend && python server.py",
     "client": "cd tripstatistics && yarn start",
     "dev": "concurrently -n 'server,client' -c 'red,green' \"nodemon dist/server.js\" \"yarn client\""
   },
