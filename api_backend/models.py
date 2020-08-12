@@ -4,6 +4,7 @@ from flask_login import UserMixin
 
 DATABASE = SqliteDatabase('TripStatistics.sqlite')
 
+
 class User(UserMixin, Model):
     username = CharField()
     email = CharField(unique=True)
@@ -11,6 +12,7 @@ class User(UserMixin, Model):
 
     class Meta:
         database = DATABASE
+
 
 class All_Map(Model):
     name = CharField()

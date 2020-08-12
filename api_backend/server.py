@@ -1,25 +1,27 @@
+from resources.users import user
+from resources.all_maps import all_map
+import models
 from flask import Flask, g
 from flask_cors import CORS
-from flask_login import LoginManager 
+from flask_login import LoginManager
 
 DEBUG = True
 PORT = 8000
 
-import models
 
-#importing resource
-from resources.all_maps import all_map
-from resources.users import user 
+# importing resource
 
-login_manager = LoginManager() # sets up the ability to set up the session
+login_manager = LoginManager()  # sets up the ability to set up the session
 
 app = Flask(__name__)
 
 
-app.secret_key = "LJAKLJLKJJLJKLSDJLKJASD" # Need this to encode the session
-login_manager.init_app(app) # set up the sessions on the app
+app.secret_key = "LJAKLJLKJJLJKLSDJLKJASD"  # Need this to encode the session
+login_manager.init_app(app)  # set up the sessions on the app
 
-@login_manager.user_loader # decorator function, that will load the user object whenever we access the session, we can get the user
+
+# decorator function, that will load the user object whenever we access the session, we can get the user
+@login_manager.user_loader
 # by importing current_user from the flask_login
 def load_user(userid):
     try:
@@ -33,6 +35,7 @@ def before_request():
     """Connect to the database before each request"""
     g.db = models.DATABASE
     g.db.connect()
+
 
 @app.after_request
 def after_request(response):
