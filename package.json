@@ -16,7 +16,7 @@
     "build": "cd tripstatistics && yarn build",
     "install-client": "cd tripstatistics && yarn install",
     "heroku-postbuild": "yarn install-client && yarn build",
-    "start": "cd ../api_backend && python server.py",
+    "start": "cd api_backend && python server.py",
     "client": "cd tripstatistics && yarn start",
     "dev": "concurrently -n 'server,client' -c 'red,green' \"nodemon dist/server.js\" \"yarn client\""
   },
@@ -37,7 +37,7 @@
   },
   "engines": {
     "node": "14.6.0",
-    "npm": "6.14.6"
+    "yarn": "1.22.4"
   },
   "proxy": "http://localhost:8000"
 }
