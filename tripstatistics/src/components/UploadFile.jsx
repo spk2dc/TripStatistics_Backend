@@ -23,12 +23,6 @@ export default function UploadFile() {
     formData.append("name", selectedFile.name);
     formData.append("user", "user5");
 
-    let post_data = {
-      name: selectedFile.name,
-      user: "user5",
-      data: selectedFile,
-    };
-
     // Details of the uploaded file
     console.log(`onFileUpload -> formData`, formData);
 
@@ -36,6 +30,20 @@ export default function UploadFile() {
     // Send formData object
     // axios.post("api/v1/all_maps/", formData);
     axios.post("http://localhost:8000/api/v1/all_maps/", formData);
+  };
+
+  // get uploaded file from database and extract data
+  const getDatabaseFile = () => {
+    axios
+      .get("http://localhost:8000/api/v1/all_maps/")
+      .then((resp) => {
+        console.log(`getDatabaseFile -> resp`, resp.data.data[0].data);
+        document.getElementById("database_file").textContent =
+          resp.data.data[0].data;
+      })
+      .catch((err) => {
+        console.log(`getDatabaseFile -> err`, err);
+      });
   };
 
   // File content to be displayed after
@@ -54,6 +62,9 @@ export default function UploadFile() {
             {selectedFile.lastModifiedDate.toLocaleDateString("en-US")}
           </p>
           <p>Size: {(selectedFile.size / 1024).toFixed(3)} KiB</p>
+          <p>Database File: </p>
+          {getDatabaseFile()}
+          <p id='database_file'></p>
         </div>
       );
     } else {
