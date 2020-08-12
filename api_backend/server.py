@@ -29,18 +29,30 @@ def load_user(userid):
     except models.DoesNotExist:
         return None
 
+# we don't want to hog up the SQL connection pool
+# so we should connect to the DB before every request
+# and close the db connection after every request
+
+# use this decorator to cause a function to run before reqs
+
 
 @app.before_request
 def before_request():
     """Connect to the database before each request"""
+    # store the database as a global var in g
+    print("app.before_request executed")
     g.db = models.DATABASE
     g.db.connect()
+
+# use this decorator to cause a function to run after reqs
 
 
 @app.after_request
 def after_request(response):
     """Close the database connection after each request"""
+    print("app.after_request executed")
     g.db.close()
+    # send response back to client
     return response
 
 
