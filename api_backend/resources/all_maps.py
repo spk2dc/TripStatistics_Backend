@@ -1,10 +1,8 @@
 import models
-
 from flask import Blueprint, jsonify, request
-
 from playhouse.shortcuts import model_to_dict
-
-from flask_login import login_required
+# from flask_login import login_required
+from werkzeug.utils import secure_filename
 
 # first argument is blueprints name
 # second argument is it's import_name
@@ -28,11 +26,14 @@ def get_all_maps():
 @all_map.route('/', methods=["POST"])
 # @login_required
 def create_maps():
-    # see request payload anagolous to req.body in express
+    # retrieve file and save name securely
+    fileInp = request.files['data']
+    fileInp.save(secure_filename(fileInp.filename))
+    # store in payload to create entry in database
     payload = {
         "name": request.form['name'],
         "user": request.form['user'],
-        "data": request.files['data']
+        "data": fileInp
     }
     print('\npayload: \n', payload)
     all_map = models.All_Map.create(**payload)
@@ -70,3 +71,7 @@ def delete_map(id):
     query = models.All_Map.delete().where(models.All_Map.id == id)
     query.execute()
     return jsonify(data='resource successfully deleted', status={"code": 200, "message": "resource deleted successfully"})
+
+# Sources:
+# https://pythonbasics.org/flask-upload-file/
+# https://flask.palletsprojects.com/en/1.1.x/patterns/fileuploads/
