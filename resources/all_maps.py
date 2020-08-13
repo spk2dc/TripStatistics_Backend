@@ -5,8 +5,12 @@ from flask import Flask, Blueprint, jsonify, request
 from playhouse.shortcuts import model_to_dict
 # from flask_login import login_required
 from werkzeug.utils import secure_filename
-
-UPLOAD_FOLDER = './file_uploads'
+if 'ON_HEROKU' in os.environ:
+    print('\nheroku upload folder set')
+    UPLOAD_FOLDER = '/tmp/'
+else:
+    print('\nlocal upload folder set')
+    UPLOAD_FOLDER = './file_uploads'
 ALLOWED_EXTENSIONS = {'json'}
 
 app = Flask(__name__)
