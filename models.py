@@ -25,7 +25,7 @@ class User(UserMixin, Model):
 class All_Map(Model):
     name = CharField()
     user = CharField()
-    data = CharField()
+    data = CharField(max_length=65535)
     created_at = DateTimeField(default=datetime.datetime.now)
 
     class Meta:
