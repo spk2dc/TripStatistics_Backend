@@ -56,7 +56,8 @@ def create_maps():
     fileString = fileInp.read().decode('utf8')
     # store in payload to create entry in database
     payload = {
-        "name": request.form['name'],
+        "trip_name": request.form['trip_name'],
+        "filename": request.form['filename'],
         "user": request.form['user'],
         "data": fileString
     }
