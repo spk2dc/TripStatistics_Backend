@@ -1,6 +1,5 @@
 import models
 import os
-import json
 from flask import Flask, Blueprint, jsonify, request
 from playhouse.shortcuts import model_to_dict
 # from flask_login import login_required
@@ -54,8 +53,7 @@ def create_maps():
     # move pointer to beginning of file after it was saved
     fileInp.stream.seek(0)
     # read from file and store as string
-    # fileString = fileInp.read().decode('utf8')
-    fileString = json.load(fileInp)
+    fileString = fileInp.read().decode('utf8')
     # store in payload to create entry in database
     payload = {
         "name": request.form['name'],
