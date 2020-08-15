@@ -42,7 +42,7 @@ def get_all_maps():
 
 
 @all_map.route('/', methods=["POST"])
-@login_required
+# @login_required
 def create_maps():
     # retrieve file and save name securely
     fileInp = request.files['data']
@@ -57,10 +57,11 @@ def create_maps():
     # read from file and store as string
     fileString = fileInp.read().decode('utf8')
     # store in payload to create entry in database
+    print('\nuser: \n', request.form['user'])
     payload = {
         "trip_name": request.form['trip_name'],
         "filename": request.form['filename'],
-        "user": current_user.id,
+        "user": request.form['user'],
         "data": fileString
     }
     print('\npayload: \n', payload)
