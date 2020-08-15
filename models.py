@@ -25,7 +25,7 @@ class User(UserMixin, Model):
 class All_Map(Model):
     trip_name = CharField()
     filename = CharField()
-    user = CharField()
+    user = ForeignKeyField(User, backref='all_maps')
     data = CharField(max_length=65535)
     created_at = DateTimeField(default=datetime.datetime.now)
 

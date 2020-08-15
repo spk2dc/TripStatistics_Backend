@@ -2,18 +2,19 @@ import models
 import os
 from flask import Flask, Blueprint, jsonify, request
 from playhouse.shortcuts import model_to_dict
-# from flask_login import login_required
+from flask_login import current_user, login_required
 from werkzeug.utils import secure_filename
+
 if 'ON_HEROKU' in os.environ:
     print('\nheroku upload folder set')
     UPLOAD_FOLDER = '/tmp/'
 else:
     print('\nlocal upload folder set')
     UPLOAD_FOLDER = './file_uploads'
-ALLOWED_EXTENSIONS = {'json'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+ALLOWED_EXTENSIONS = {'json'}
 
 # first argument is blueprints name
 # second argument is it's import_name
@@ -22,25 +23,26 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 all_map = Blueprint('all_maps', 'all_map', url_prefix='/api/v1/all_maps')
 
 
-@all_map.route('/', methods=["GET"])
-# @login_required
-def get_all_maps():
-    # find the maps and change each one to a dictionary into a new array
-    try:
-        all_maps = [model_to_dict(map) for map in models.All_Map.select()]
-        print(all_maps)
-        return jsonify(data=all_maps, status={"code": 200, "message": "Success"})
-    except models.DoesNotExist:
-        return jsonify(data={}, status={"code": 401, "message": "Error getting the resources"})
-
-
 def allowed_file(filename):
+    """Check if filename is an allowed extension"""
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
+@all_map.route('/', methods=["GET"])
+@login_required
+def get_all_maps():
+    # find the maps and change each one to a dictionary into a new array
+    try:
+        all_maps = [model_to_dict(map) for map in current_user.all_maps]
+        print(all_maps)
+        return jsonify(data=all_maps, status={"code": 200, "message": "Get all maps successful"})
+    except models.DoesNotExist:
+        return jsonify(data={}, status={"code": 401, "message": "Error getting all maps"})
+
+
 @all_map.route('/', methods=["POST"])
-# @login_required
+@login_required
 def create_maps():
     # retrieve file and save name securely
     fileInp = request.files['data']
@@ -58,7 +60,7 @@ def create_maps():
     payload = {
         "trip_name": request.form['trip_name'],
         "filename": request.form['filename'],
-        "user": request.form['user'],
+        "user": current_user.id,
         "data": fileString
     }
     print('\npayload: \n', payload)
@@ -70,21 +72,22 @@ def create_maps():
     # Change the model to a dict
     print('\nmodel to dict\n', model_to_dict(all_map))
     map_dict = model_to_dict(all_map)
-    return jsonify(data=map_dict, status={"code": 201, "message": "Success"})
+    return jsonify(data=map_dict, status={"code": 201, "message": "Create maps successful"})
 
 
 @all_map.route('/<id>', methods=["GET"])
-# @login_required
+@login_required
 def get_one_map(id):
-    print(id, 'reserved word?')
-    all_map = models.All_Map.get_by_id(id)
-    print(all_map.__dict__)
-    return jsonify(data=model_to_dict(all_map), status={"code": 200, "message": "Success"})
+    print('\nget map id: ', id)
+    one_map = models.All_Map.get_by_id(id)
+    print('\none map: \n', one_map.__dict__)
+    return jsonify(data=model_to_dict(one_map), status={"code": 200, "message": "Get one map successful"})
 
 
 @all_map.route('/<id>', methods=["PUT"])
-# @login_required
+@login_required
 def update_map(id):
+    print('\nupdate map id: ', id)
     payload = request.get_json()
     query = models.All_Map.update(**payload).where(models.All_Map.id == id)
     query.execute()
@@ -92,8 +95,9 @@ def update_map(id):
 
 
 @all_map.route('/<id>', methods=["Delete"])
-# @login_required
+@login_required
 def delete_map(id):
+    print('\ndelete map id: ', id)
     query = models.All_Map.delete().where(models.All_Map.id == id)
     query.execute()
     return jsonify(data='resource successfully deleted', status={"code": 200, "message": "resource deleted successfully"})
