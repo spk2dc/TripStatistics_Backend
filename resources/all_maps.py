@@ -29,6 +29,17 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
+def print_map_small(one_map):
+    """Print one map excluding location data for brevity"""
+    print('print_map_small method')
+    print('map.__dict__ {',
+          '\n   id: ', one_map.__dict__['__data__']['id'],
+          '\n   user: ', one_map.__dict__['__data__']['user'],
+          '\n   filename: ', one_map.__dict__['__data__']['filename'],
+          '\n   trip_name: ', one_map.__dict__['__data__']['trip_name'],
+          '\n}\n')
+
+
 @all_map.route('/', methods=["GET"])
 # @login_required
 def get_all_maps():
@@ -65,27 +76,27 @@ def create_maps():
         "user": request.form['user'],
         "data": fileString
     }
-    print('\ncreate map payload: \n',
-          payload['user'], payload['filename'], payload['trip_name'], '\n\ndata[:500] is \n', payload['data'][:500])
-    all_map = models.All_Map.create(**payload)
+    print('\ncreate map payload { \n',
+          payload['user'], payload['filename'], payload['trip_name'], '\n\npayload data[:500] is \n', payload['data'][:500], '\n}  end create map payload\n')
+    new_map = models.All_Map.create(**payload)
     # see the object
-    # print('\npayload.__dict__: \n', all_map.__dict__)
+    print_map_small(new_map)
     # Look at all the methods
-    # print('\npayload methods: \n', dir(all_map))
+    # print('\npayload methods: \n', dir(new_map))
     # Change the model to a dict
-    map_dict = model_to_dict(all_map)
+    map_dict = model_to_dict(new_map)
     map_dict['data'] = map_dict['data'][:500] + \
         '\n*****location data truncated for printing*****\n'
-    print('\nmodel to dict: \n', map_dict)
+    print('\nnew_map model to dict: \n', map_dict)
     return jsonify(data=map_dict, status={"code": 201, "message": "Create maps successful"})
 
 
 @all_map.route('/<id>', methods=["GET"])
-@login_required
+# @login_required
 def get_one_map(id):
     print('\nget map id: ', id)
     one_map = models.All_Map.get_by_id(id)
-    print('\none map: \n', one_map.__dict__)
+    print_map_small(one_map)
     return jsonify(data=model_to_dict(one_map), status={"code": 200, "message": "Get one map successful"})
 
 
