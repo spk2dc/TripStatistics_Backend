@@ -35,7 +35,7 @@ def get_all_maps():
     # find the maps and change each one to a dictionary into a new array
     try:
         print('\nget all maps for user: \n', current_user.get_id())
-        all_maps = [model_to_dict(map) for map in current_user.all_maps]
+        all_maps = [model_to_dict(map) for map in models.All_Map.select()]
         print('\nall maps: \n', all_maps)
         return jsonify(data=all_maps, status={"code": 200, "message": "Get all maps successful"})
     except models.DoesNotExist:
