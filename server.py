@@ -22,12 +22,14 @@ login_manager.init_app(app)  # set up the sessions on the app
 
 
 # decorator function, that will load the user object whenever we access the session, we can get the user
-@login_manager.user_loader
 # by importing current_user from the flask_login
+@login_manager.user_loader
 def load_user(userid):
     try:
+        print("\nloading user: ", userid)
         return models.User.get(models.User.id == userid)
     except models.DoesNotExist:
+        print("\nload failed for user: ", userid)
         return None
 
 # we don't want to hog up the SQL connection pool
