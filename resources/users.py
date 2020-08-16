@@ -2,7 +2,7 @@ import models
 
 from flask import request, jsonify, Blueprint
 from flask_bcrypt import generate_password_hash, check_password_hash
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, current_user
 from playhouse.shortcuts import model_to_dict
 
 
@@ -19,7 +19,7 @@ def register():
     # This has all the data like username, email, password
     payload = request.get_json()
     payload['email'] = payload['email'].lower()
-    print('payload:', payload)
+    print('\nregister payload: \n', payload)
 
     try:
         # Find if the user already exists?
@@ -35,7 +35,7 @@ def register():
         login_user(user)
 
         user_dict = model_to_dict(user)
-        print(user_dict)
+        print('\nregistered user: \n', user_dict)
         print(type(user_dict))
         # delete the password before we return it, because we don't need the client to be aware of it
         del user_dict['password']
@@ -47,7 +47,7 @@ def register():
 def login():
     payload = request.get_json()
     payload['email'] = payload['email'].lower()
-    print('payload:', payload)
+    print('\nlogin payload: \n', payload)
 
     try:
         # Try to find the user by their email
@@ -59,7 +59,7 @@ def login():
             # delete the password since the client doesn't need it
             del user_dict['password']
             login_user(user)  # set up the session
-            print('user is : ', user)
+            print('\nlogged in user is: \n', user)
             # respond to the client
             return jsonify(data=user_dict, status={"code": 200, "message": "Login successful"})
         else:
@@ -70,5 +70,6 @@ def login():
 
 @user.route('/logout', methods=["GET"])
 def logout():
+    print('\nlogging out: \n', current_user)
     logout_user()
     return jsonify(data={}, status={'code': 200, 'message': 'Successful logout'})
