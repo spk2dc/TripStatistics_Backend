@@ -18,6 +18,7 @@ app = Flask(__name__)
 
 # Need to specify cookie settings when deployed due to chrome issue. This causes problems locally though so only setting conditionally
 if 'ON_HEROKU' in os.environ:
+    print("\nchanging heroku cookie settings for live site")
     app.config.update(
         SESSION_COOKIE_SECURE=True,
         SESSION_COOKIE_SAMESITE='None',
