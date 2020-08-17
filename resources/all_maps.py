@@ -41,7 +41,7 @@ def print_map_small(one_map):
 
 
 @all_map.route('/', methods=["GET"])
-# @login_required
+@login_required
 def get_all_maps():
     # find the maps and change each one to a dictionary into a new array
     try:
@@ -54,7 +54,7 @@ def get_all_maps():
 
 
 @all_map.route('/', methods=["POST"])
-# @login_required
+@login_required
 def create_maps():
     # retrieve file and save name securely
     fileInp = request.files['data']
@@ -92,7 +92,7 @@ def create_maps():
 
 
 @all_map.route('/<id>', methods=["GET"])
-# @login_required
+@login_required
 def get_one_map(id):
     print('\nget map id: ', id)
     one_map = models.All_Map.get_by_id(id)
