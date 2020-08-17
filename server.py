@@ -15,7 +15,10 @@ PORT = 8000
 login_manager = LoginManager()  # sets up the ability to set up the session
 
 app = Flask(__name__)
-
+app.config.update(
+    SESSION_COOKIE_SECURE=True,
+    SESSION_COOKIE_SAMESITE='None',
+)
 
 app.secret_key = "LJAKLJLKJJLJKLSDJLKJASD"  # Need this to encode the session
 login_manager.init_app(app)  # set up the sessions on the app
