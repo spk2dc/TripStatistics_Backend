@@ -55,7 +55,7 @@ def login():
         print('\nfound user is: \n', user)
         # if you find the User model convert in to a dictionary so you can edit and jsonify it
         user_dict = model_to_dict(user)
-        print('\nfound user as dictionary: \n', user_dict)
+        # print('\nfound user as dictionary: \n', user_dict)
         # use bcrypt to check password and see if input password matches
         if(check_password_hash(user_dict['password'], payload['password'])):
             # delete the password since the client doesn't need it
