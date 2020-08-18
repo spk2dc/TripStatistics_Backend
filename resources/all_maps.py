@@ -97,6 +97,11 @@ def get_one_map(id):
     print('\nget map id: ', id)
     one_map = models.All_Map.get_by_id(id)
     print_map_small(one_map)
+    print('Found map user', int(one_map.user.id),
+          'Current user', int(current_user.get_id()))
+    if int(one_map.user.id) != int(current_user.get_id()):
+        print('Map does not belong to current user')
+        return jsonify(data={}, status={"code": 500, "message": "Map does not belong to current user"})
     return jsonify(data=model_to_dict(one_map), status={"code": 200, "message": "Get one map successful"})
 
 
