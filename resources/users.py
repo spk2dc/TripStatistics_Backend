@@ -19,7 +19,7 @@ def register():
     # This has all the data like username, email, password
     payload = request.get_json()
     payload['email'] = payload['email'].lower()
-    print('\nregister payload: \n', payload)
+    # print('\nregister payload: \n', payload)
 
     try:
         # Find if the user already exists?
@@ -47,7 +47,7 @@ def register():
 def login():
     payload = request.get_json()
     payload['email'] = payload['email'].lower()
-    print('\nlogin payload: \n', payload)
+    # print('\nlogin payload: \n', payload)
 
     try:
         # Try to find the user by their email
