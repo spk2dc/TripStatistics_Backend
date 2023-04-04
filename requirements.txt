@@ -13,5 +13,5 @@ peewee==3.13.3
 psycopg2-binary==2.8.5
 pycparser==2.20
 six==1.15.0
-ujson==3.1.0
+ujson==5.4.0
 Werkzeug==2.2.3
